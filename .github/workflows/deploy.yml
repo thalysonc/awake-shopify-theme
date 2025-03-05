@@ -24,10 +24,10 @@ jobs:
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
-      - name: Build Javascript
-        run: npm run js --if-present
-      - name: Build CSS
-        run: npm run css --if-present
+      # - name: Build Javascript
+      #   run: npm run js --if-present
+      # - name: Build CSS
+      #   run: npm run css --if-present
       - name: Replace .shopifyignore with deployment version
         run: |
           rm -f .shopifyignore
