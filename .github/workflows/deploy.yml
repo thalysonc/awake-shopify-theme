@@ -18,7 +18,7 @@ jobs:
           node-version: 18
       - run: node --version
       - name: Cache node modules
-        uses: actions/cache@v1 # Atualizado para v4
+        uses: actions/cache@v4 # Atualizado para v4
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
