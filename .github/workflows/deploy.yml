@@ -32,12 +32,12 @@ jobs:
         run: |
           rm -f .shopifyignore
           cp .shopifyignore.deploy .shopifyignore
-      - uses: ruby/setup-ruby@v1.172.0 # Atualizado para última versão
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
           bundler: "latest"
       - name: Install Shopify CLI
-        run: npm install -g @shopify/cli@3.68.0
+        run: npm install -g @shopify/cli@3.76.2
       - name: Deploy
         env:
           SHOPIFY_FLAG_STORE: "${{ secrets.DEVELOPMENT_SHOP_STORE }}"
