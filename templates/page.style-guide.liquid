@@ -1,0 +1,306 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Style Guide</title>
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ 'favicon.png' | asset_img_url: '80x' }}">
+    <link rel="apple-touch-icon" href="{{ 'favicon.png' | asset_img_url: '80x' }}">
+
+    {{ 'styleguide.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'styleguide.js' | asset_url }}" defer="defer"></script>
+
+    {% render 'css-init' %}
+    {% render 'head-scripts' %}
+
+  </head>
+  <body>
+
+    {%- assign product = all_products['product-test'] -%}
+    {%- assign collection = collections['frontpage'] -%}
+
+    {% assign current_variant = product.selected_or_first_available_variant %}
+
+    {% assign blog = blogs['news'] %}
+    {% assign article = articles["news/article-test"] %}
+
+    <styleguide-ui>
+
+      <styleguide-section
+        data-title="Page containers"
+        data-group="Global"
+        data-status="done">
+
+        <div class="container">
+          <div class="max-w-full bg-primary-400 text-onPrimary-400 h-96 font-bold flex items-center justify-center">Container</div>
+        </div>
+
+        <br>
+
+        <div class="container max-w-full">
+          <div class="max-w-full bg-primary-400 text-onPrimary-400 h-96 font-bold flex items-center justify-center">Full width container</div>
+        </div>
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Colors"
+        data-group="Global"
+        data-status="done">
+
+        <div class="bg-primary-100 text-onPrimary-100 w-full h-20 p-4 uppercase font-bold">Primary 100 (#DBDBDB)</div>
+        <div class="bg-primary-200 text-onPrimary-200 w-full h-20 p-4 uppercase font-bold">Primary 200 (#A7A5A6)</div>
+        <div class="bg-primary-300 text-onPrimary-300 w-full h-20 p-4 uppercase font-bold">Primary 300 (#7B7979)</div>
+        <div class="bg-primary-400 text-onPrimary-400 w-full h-20 p-4 uppercase font-bold">Primary 400 (#4F4C4D)</div>
+        <div class="bg-primary-500 text-onPrimary-500 w-full h-20 p-4 uppercase font-bold">Primary 500 (#231F20)</div>
+        <div class="bg-primary-600 text-onPrimary-600 w-full h-20 p-4 uppercase font-bold">Primary 600 (#231F20)</div>
+
+        <div class="bg-secondary-200 text-onSecondary-200 w-full h-20 p-4 uppercase font-bold">Secondary 200 (#F9F3F2)</div>
+        <div class="bg-secondary-300 text-onSecondary-300 w-full h-20 p-4 uppercase font-bold">Secondary 300 (#F3EBEB)</div>
+        <div class="bg-secondary-400 text-onSecondary-400 w-full h-20 p-4 uppercase font-bold">Secondary 400 (#DCCACB)</div>
+        <div class="bg-secondary-500 text-onSecondary-500 w-full h-20 p-4 uppercase font-bold">Secondary 500 (#BBA2AA)</div>
+        <div class="bg-secondary-600 text-onSecondary-600 w-full h-20 p-4 uppercase font-bold">Secondary 600 (#9B757C)</div>
+        <div class="bg-secondary-700 text-onSecondary-700 w-full h-20 p-4 uppercase font-bold">Secondary 700 (#835C63)</div>
+
+        <div class="bg-tertiary-400 text-onTertiary-400 w-full h-20 p-4 uppercase font-bold">Tertiary 400 (#FBF9F6)</div>
+        <div class="bg-tertiary-500 text-onTertiary-500 w-full h-20 p-4 uppercase font-bold">Tertiary 500 (#FBF9F6)</div>
+        <div class="bg-tertiary-600 text-onTertiary-600 w-full h-20 p-4 uppercase font-bold">Tertiary 600 (#FBF9F6)</div>
+
+        <div class="bg-accent-400 text-onAccent-400 w-full h-20 p-4 uppercase font-bold">Accent 400 (#231F20)</div>
+        <div class="bg-accent-500 text-onAccent-500 w-full h-20 p-4 uppercase font-bold">Accent 500 (#231F20)</div>
+        <div class="bg-accent-600 text-onAccent-600 w-full h-20 p-4 uppercase font-bold">Accent 600 (#231F20)</div>
+
+        <div class="bg-alert-error text-onAlert-error w-full h-20 p-4 uppercase font-bold">Error (#DC2626)</div>
+        <div class="bg-alert-success text-onAlert-success w-full h-20 p-4 uppercase font-bold">Success (#16A24A)</div>
+        <div class="bg-alert-highlight text-onAlert-highlight w-full h-20 p-4 uppercase font-bold">Highlight (#2563EA)</div>
+        <div class="bg-alert-warning text-onAlert-warning w-full h-20 p-4 uppercase font-bold">Warning (#E9580C)</div>
+
+        <div class="bg-base-background text-onBase-background w-full h-20 p-4 uppercase font-bold">Background (#FFFFFF)</div>
+        <div class="bg-base-surface text-onBase-surface w-full h-20 p-4 uppercase font-bold">Surface (#FFFFFF)</div>
+        <div class="bg-base-border w-full h-20 p-4 uppercase font-bold text-primary-500">Border (#DBDBDB)</div>
+
+        <div class="bg-neutral-dark text-onNeutral-dark w-full h-20 p-4 uppercase font-bold">Dark (#231F20)</div>
+        <div class="bg-neutral-light text-onNeutral-light w-full h-20 p-4 uppercase font-bold">Light (#FFFFFF)</div>
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Fonts"
+        data-group="Global"
+        data-status="done">
+
+        <div class="flex flex-col gap-4">
+          <div class="text-3xl leading-10 font-primary font-thin">Jost - Thin 100</div>
+          <div class="text-3xl leading-10 font-primary font-extralight">Jost - ExtraLight 200</div>
+          <div class="text-3xl leading-10 font-primary font-light">Jost - Light 300</div>
+          <div class="text-3xl leading-10 font-primary">Jost - Regular 400</div>
+          <div class="text-3xl leading-10 font-primary font-medium">Jost - Medium 500</div>
+          <div class="text-3xl leading-10 font-primary font-bold">Jost - Bold 700</div>
+        </div>
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Typography"
+        data-group="Global"
+        data-status="done">
+
+        <div class="flex flex-col gap-4">
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore              
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore              
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+
+          <p>Lorem ipsum dolor sit amet,
+            <a href="#">consectetur adipiscing elit</a>, sed do eiusmod tempor              
+                    incididunt ut labore
+                    et dolore magna aliqua.
+            <b>Ut enim ad minim veniam</b>, quis nostrud exercitation ullamco laboris              
+                    nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur.
+            <i>Excepteur sint occaecat cupidatat non proident, sunt in              
+                    culpa qui officia</i>
+            deserunt mollit anim id est laborum.
+          </p>
+
+        </div>
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Buttons"
+        data-group="Global"
+        data-status="pending">
+
+        <div class="flex gap-5 flex-wrap">
+
+          <button class="btn">Primary Button</button>
+
+          <button class="btn btn-ghost">Ghost Button</button>
+
+        </div>
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Forms"
+        data-group="Global"
+        data-status="pending">
+
+        <div class="flex flex-col gap-10">
+
+          <div class="field">
+            <label for="input__default1">Input Default</label>
+            <input
+              type="text"
+              name="input_example"
+              id="input__default1"
+              placeholder="Text placeholder">
+          </div>
+
+          <div class="field">
+            <label for="input__default2">Input Disabled</label>
+            <input
+              type="text"
+              name="input_example"
+              id="input__default2"
+              placeholder="Text placeholder"
+              disabled>
+          </div>
+
+          <div class="field">
+            <label for="select_test1">Select</label>
+            <select id="select_test1">
+              <option>Select an option</option>
+              <option value="Item2">Option 1</option>
+              <option value="Item3">Option 2</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="copt1" class="checkbox-label">
+              <input
+                type="checkbox"
+                id="copt1"
+                name="checkboxtest"
+                value="opt1"
+                checked>
+              This is an example
+            </label>
+            <label for="copt2" class="checkbox-label">
+              <input
+                type="checkbox"
+                id="copt2"
+                name="checkboxtest"
+                value="opt2">
+              This is an example
+            </label>
+            <label for="copt3" class="checkbox-label disabled">
+              <input
+                type="checkbox"
+                id="copt3"
+                name="checkboxtest"
+                value="opt3"
+                disabled>
+              This is an example
+            </label>
+          </div>
+
+          <div class="field">
+            <div>
+              <label for="opt1" class="radio-label">
+                <input
+                  type="radio"
+                  id="opt1"
+                  name="radiotest"
+                  value="opt1"
+                  checked>
+                This is an example
+              </label>
+            </div>
+            <div>
+              <label for="opt2" class="radio-label">
+                <input
+                  type="radio"
+                  id="opt2"
+                  name="radiotest"
+                  value="opt2">
+                This is an example
+              </label>
+            </div>
+            <div>
+              <label for="opt3" class="radio-label disabled">
+                <input
+                  type="radio"
+                  id="opt2"
+                  name="radiotest"
+                  value="opt2"
+                  disabled>
+                This is an example
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <textarea
+              name="textarea_test"
+              id="input_textarea"
+              cols="35"
+              rows="5"
+              placeholder="Enter your email adress"></textarea>
+          </div>
+
+        </div>
+
+      </styleguide-section>
+
+      <styleguide-section
+        class="style-guide-icons"
+        data-title="Icons"
+        data-group="Global"
+        data-status="pending">
+
+        <div class="grid grid-cols-12 gap-4">
+
+          <div class="w-12 h-12">
+            {% render 'icon-cart' %}
+          </div>
+
+        </div>
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Variant Selector"
+        data-group="Product"
+        data-status="pending">
+
+        <variant-selector data-handle="{{ product.handle }}"></variant-selector>
+
+      </styleguide-section>
+
+    </styleguide-ui>
+
+    {% render 'footer-scripts' %}
+
+  </body>
+</html>

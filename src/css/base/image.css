@@ -1,0 +1,5 @@
+@layer base {
+	img {
+		max-width: 100%;
+	}
+}

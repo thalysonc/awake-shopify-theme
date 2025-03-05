@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+---
+
+## How the Style Guide Works
+
+- The style guide is simply a page that displays components in isolation on a blank page.
+- The style guide page is @page.style-guide.liquid.
+- We primarily use two web components to build the style guide UI: `styleguide-ui`, which acts as a wrapper for `styleguide-section`.
+- We need to add our components inside `styleguide-section`.

@@ -1,0 +1,9 @@
+<script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
+
+{% comment %} Init theme {% endcomment %}
+<script type="text/javascript">
+    window.theme = window.theme || {};
+    window.theme.script = {};
+    window.theme.fileUrl = "{{ '' | file_url }}";
+    window.theme.enviroment = "{{ shop.id }}";
+</script>

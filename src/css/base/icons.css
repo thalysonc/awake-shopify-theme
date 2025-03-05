@@ -1,0 +1,5 @@
+@layer base {
+	.icon {
+		@apply w-full h-auto;
+	}
+}

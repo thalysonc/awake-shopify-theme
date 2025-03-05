@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+	<head>
+		
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="theme-color" content="">
+		<link rel="icon" type="image/x-icon" href="{{ 'favicon.png' | asset_img_url: '80x' }}">
+		<link rel="apple-touch-icon" href="{{ 'favicon.png' | asset_img_url: '80x' }}">
+		<link rel="canonical" href="{{ canonical_url }}">
+
+		<title>{{ page_title }}</title>
+
+		{% if page_description %}
+			<meta name="description" content="{{ page_description | escape }}">
+		{% endif %}
+
+		{% render 'css-init' %}
+
+        {% render 'head-scripts' %}
+
+		{{ content_for_header }}
+		
+	</head>
+
+	<body class="template-{{ request.page_type | handle }} template-type-{{ template | handle }}">
+
+		{{ content_for_layout }}
+
+		{% render 'footer-scripts' %}
+
+	</body>
+	
+</html>

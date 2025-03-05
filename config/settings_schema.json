@@ -1,0 +1,19 @@
+[
+	{
+		"name": "theme_info",
+		"theme_name": "Shopify Starter Kit",
+		"theme_version": "1.0.0",
+		"theme_author": "Luiz Venturote",
+		"theme_documentation_url": "https://luizventurote.com/",
+		"theme_support_url": "https://luizventurote.com/"
+	},
+	{
+		"name": "theme_settings",
+		"settings": [
+			{
+				"type": "header",
+				"content": "Header"
+			}
+		]
+	}
+]

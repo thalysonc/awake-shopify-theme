@@ -1,0 +1,26 @@
+@layer base {
+	html {
+		@apply antialiased;
+	}
+
+	body {
+		@apply leading-normal font-normal bg-base-background text-onBase-background font-primary tracking-normal;
+	}
+
+	p {
+		@apply mb-2;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-normal;
+	}
+
+	a {
+		@apply text-primary-500 hover:underline;
+	}
+}

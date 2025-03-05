@@ -1,0 +1,311 @@
+/**
+ * Style Guide UI
+ * 
+ * @version 1.1.0
+ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.page-wrapper,
+.page-main,
+.columns,
+.columns .main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-width: 100%;
+}
+
+styleguide-ui {
+    padding: 0 0 0 250px;
+    margin: 0;
+    display: block;
+    position: relative;
+    height: 100%;
+    background: #000;
+    width: 100%;
+    transition: .5s ease-out transform, .5s ease-out width;
+}
+
+styleguide-ui [data-sidebar] {
+    width: 250px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    border-right: 1px solid black;
+    height: 100%;
+    background: black;
+    font-family: arial;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 10px;
+    overflow: auto;
+}
+
+styleguide-ui [data-sidebar]:before {
+    content: 'Style Guide';
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #505050;
+    margin-bottom: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    color: white;
+}
+
+styleguide-ui [data-sidebar] a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #2c2c2c;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+    text-decoration: none;
+    margin: 0 0 10px 0;
+    color: white;
+    font-family: arial;
+    letter-spacing: 1px;
+    line-height: 12px;
+    position: relative;
+    border-left: 2px solid white;
+}
+
+styleguide-ui [data-sidebar] a:hover {
+    background: #505050;
+}
+
+styleguide-ui [data-sidebar] a:after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: #5d5d5d;
+    display: block;
+    border-radius: 100%;
+}
+
+styleguide-ui [data-sidebar] a.pending:after {
+    background: yellow;
+    box-shadow: 0 0 10px 1px yellow;
+}
+
+styleguide-ui [data-sidebar] a.done:after {
+    background: lime;
+    box-shadow: 0 0 10px 1px lime;
+}
+
+styleguide-ui [data-sidebar] a.error:after {
+    background: red;
+    box-shadow: 0 0 10px 1px red;
+}
+
+styleguide-ui [data-sidebar] a.active {
+    border-color: #E75128;
+}
+
+styleguide-ui [data-sidebar] a span {
+    width: calc(100% - 15px);
+    pointer-events: none;  
+}
+
+styleguide-ui [data-sidebar] [data-group]:before {
+    content: attr(data-group);
+    display: block;
+    width: 100%;
+    padding: 20px 0 15px;
+    text-transform: uppercase;
+    color: white;
+}
+
+styleguide-ui [data-sidebar].btn:focus, 
+styleguide-ui [data-sidebar] a.btn:focus, 
+styleguide-ui [data-sidebar] button:focus {
+    outline: 0;
+}
+
+styleguide-ui [data-sidebar] a:focus-visible,
+styleguide-ui [data-sidebar] button:focus-visible {
+    outline: 1px solid #E75128;
+    outline-offset: -1px;
+}
+
+styleguide-section {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: white;
+    /* resize: both; */
+    max-width: 100%;
+    max-height: 100%;
+}
+
+styleguide-ui [data-screen-options] {
+    display: flex;
+}
+
+styleguide-ui [data-screen-option] {
+    padding: 0;
+    height: auto;
+    background: #2c2c2c;
+    font-size: 12px;
+    padding: 10px;
+    width: 100%;
+    text-decoration: none;
+    margin: 0;
+    color: #fff;
+    font-family: arial;
+    letter-spacing: 1px;
+    line-height: 12px;
+    position: relative;
+    font-weight: normal;
+    border-radius: 0;
+}
+
+styleguide-ui [data-screen-option]:hover {
+    background: #505050;
+    color: #fff;
+    border: 0;
+    outline: none;
+}
+
+styleguide-ui [data-screen-option]:active {
+    text-decoration: none;
+}
+
+styleguide-ui .styleguide-ui-icons svg {
+    fill: #000;
+    margin: 5px;
+}
+
+[data-sidebar-toggle] {
+    position: fixed;
+    bottom: 20px;
+    left: 240px;
+    background: #e75128;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    font-size: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(90deg);
+    background-size: 8px;
+    transition: .5s ease-out transform;
+    padding: 0;
+}
+
+[data-sidebar-toggle]:hover {
+    background-color: #ed3300 !important;
+}
+
+styleguide-ui.hide-sidebar {
+    transform: translateX(-250px);
+    width: calc(100% + 250px);
+}
+
+styleguide-ui.hide-sidebar [data-sidebar-toggle] {
+    transform: rotate(-90deg) translateY(20px);
+}
+
+styleguide-ui pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    background: #efefef;
+    padding: 0;
+    margin: 20px 0;
+    line-height: 20px;
+    font-size: 12px;
+}

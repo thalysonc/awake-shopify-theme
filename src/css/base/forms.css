@@ -1,0 +1,106 @@
+@layer base {
+	[type="text"],
+	[type="email"],
+	[type="url"],
+	[type="password"],
+	[type="number"],
+	[type="date"],
+	[type="datetime-local"],
+	[type="month"],
+	[type="search"],
+	[type="tel"],
+	[type="time"],
+	[type="week"],
+	[multiple],
+	textarea,
+	select,
+	input {
+		@apply border border-primary-200 text-base text-primary-300 leading-[16px] tracking-[0.8px] font-light py-[10px] px-4 block w-full;
+
+		&::placeholder {
+			@apply text-primary-200;
+		}
+
+		&:focus {
+			&::placeholder {
+				@apply text-primary-100;
+			}
+		}
+
+		&:disabled {
+			@apply bg-primary-100 border-primary-100;
+
+			&::placeholder {
+				@apply text-primary-200;
+			}
+		}
+
+		&.error {
+			@apply border-alert-error border-2 ring-transparent;
+		}
+
+		&.icon-left {
+			@apply pl-11;
+		}
+
+		&.icon-right {
+			@apply pr-11;
+		}
+	}
+
+	input:not([type="checkbox"]):not(:placeholder-shown) {
+		@apply border-primary-500 ring-secondary-400;
+	}
+
+	textarea:not(:placeholder-shown) {
+		@apply border-primary-500 border-[1px] ring-secondary-400;
+	}
+
+	/* Label */
+	label {
+		@apply font-normal text-[12px] leading-[12px] tracking-[1.2px] mb-2 uppercase flex items-center;
+	}
+
+	/* Select */
+	select {
+		@apply py-3 px-4 leading-[20px];
+	}
+
+	/* Checkbox Only */
+	[type="checkbox"] {
+		@apply rounded-sm mr-2 mb-1 border-primary-200
+                checked:bg-auto checked:bg-secondary-600 checked:ring-transparent checked:text-secondary-600;
+
+		&:checked {
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' viewBox='0 0 12 10' fill='none'%3E%3Cpath d='M11.9997 1.66656L3.99967 9.66656L0.333008 5.9999L1.27301 5.0599L3.99967 7.7799L11.0597 0.726562L11.9997 1.66656Z' fill='white'/%3E%3C/svg%3E");
+		}
+	}
+
+	/* Radio Button Only */
+	[type="radio"] {
+		@apply mr-2 mb-1 border-primary-200
+                checked:bg-secondary-500 checked:ring-transparent checked:text-secondary-500;
+	}
+
+	[type="checkbox"],
+	[type="radio"] {
+		&:disabled {
+			@apply border-primary-100;
+		}
+	}
+
+	input:checked + .toggle-bg {
+		@apply bg-secondary-600 border-secondary-600
+                after:border-white after:translate-x-full;
+	}
+    
+	ul li,
+	ol li {
+		@apply !pl-0 !mt-0;
+	}
+
+	ul li:last-child,
+	ol li:last-child {
+		@apply !mb-0;
+	}
+}

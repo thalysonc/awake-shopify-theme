@@ -1,0 +1,46 @@
+name: Deploy to development
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: node --version
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Build Javascript
+        run: npm run js --if-present
+      - name: Build CSS
+        run: npm run css --if-present
+      - name: Replace .shopifyignore with deployment version
+        run: |
+          rm -f .shopifyignore
+          cp .shopifyignore.deploy .shopifyignore
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler: "latest"
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@3.68.0
+      - name: Deploy
+        env:
+          SHOPIFY_FLAG_STORE: "${{ secrets.DEVELOPMENT_SHOP_STORE }}"
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.DEVELOPMENT_THEME_TOKEN }}
+          SHOPIFY_CLI_TTY: 0
+        run: shopify theme push --allow-live --theme ${{ secrets.DEVELOPMENT_THEME_ID }}
