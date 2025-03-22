@@ -1,0 +1,36 @@
+{% schema %}
+  {
+    "name": "Test Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "text_1",
+        "label": "First Text",
+        "default": "First text content"
+      },
+      {
+        "type": "text",
+        "id": "text_2",
+        "label": "Second Text",
+        "default": "Second text content"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Test Section",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}
+
+<div class="container">
+  This is a test section
+  {% if section.settings.text_1 != blank %}
+    <p>{{ section.settings.text_1 }}</p>
+  {% endif %}
+
+  {% if section.settings.text_2 != blank %}
+    <p>{{ section.settings.text_2 }}</p>
+  {% endif %}
+</div>

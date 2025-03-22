@@ -1,0 +1,64 @@
+@layer components {
+
+    component-accordion {
+        @apply block w-full;
+    }
+
+    component-accordion [data-accordion-trigger] {
+        @apply cursor-pointer w-full text-left
+               transition-colors duration-200
+               focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    }
+
+    /* Hide icons when accordion is disabled (desktop) */
+    component-accordion[data-disabled="true"] [data-accordion-trigger] {
+        @apply cursor-default pointer-events-none;
+    }
+
+    component-accordion[data-disabled="true"] [data-accordion-trigger] span {
+        @apply hidden;
+    }
+
+    component-accordion [data-accordion-container] {
+        @apply overflow-hidden max-h-0
+               transition-[max-height] duration-300 ease-in-out
+               will-change-[max-height];
+    }
+
+    /* Keep content visible when disabled */
+    component-accordion[data-disabled="true"] [data-accordion-container] {
+        @apply max-h-none overflow-visible transition-none;
+    }
+
+    component-accordion [data-accordion-container].hidden {
+        @apply invisible;
+    }
+
+    /* Don't hide container when disabled */
+    component-accordion[data-disabled="true"] [data-accordion-container] {
+        @apply visible !important;
+    }
+  
+    component-accordion [data-accordion-trigger].active .icon-add {
+        @apply hidden;
+    }
+  
+    component-accordion [data-accordion-trigger].active .icon-less {
+        @apply inline-block;
+    }
+  
+    component-accordion [data-accordion-container].active {
+        @apply visible;
+    }
+
+    /* Support for reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+        component-accordion [data-accordion-container] {
+            @apply transition-none;
+        }
+        
+        component-accordion [data-accordion-trigger] {
+            @apply transition-none;
+        }
+    }
+}

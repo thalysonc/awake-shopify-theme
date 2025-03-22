@@ -1,0 +1,202 @@
+<div class="main-footer border-t">
+
+  <div class="px-5 py-8 flex flex-col gap-8 tablet:flex-row laptop:container laptop:gap-4 desktop:gap-8">
+
+    <div class="flex flex-col gap-5 tablet:w-1/2 tablet:order-2 laptop:w-1/3 desktop:w-3/12">
+
+      <div class="uppercase text-sm">Become an Insider</div>
+      <div class="field flex flex-col gap-3">
+        <label for="" class="text-sm leading-[18px] normal-case tracking-normal m-0">Join our mailing list and be the first to hear about new designs, guides and more.</label>
+        <input type="text" placeholder="Enter your email">
+        <div class="flex">
+          <button class="btn w-full laptop:w-auto">Submit</button>
+        </div>
+      </div>
+
+      <div class="flex">
+        {% render 'social-icons' %}
+      </div>
+
+    </div>
+
+    <div class="flex flex-col divide-y tablet:w-1/2 tablet:order-1 laptop:w-2/3 laptop:flex-row laptop:justify-between laptop:pr-10 laptop:divide-none laptop:gap-4 desktop:w-9/12 desktop:gap-8 desktop:pr-20">
+    
+    <component-accordion class="group laptop:w-auto">
+        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
+          Customer Service
+          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
+            {% render 'icon-plus' %}
+          </span>
+          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
+            {% render 'icon-minus' %}
+          </span>
+        </div>
+        <div data-accordion-container>
+          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
+            <li>
+              <a href="">Loyalty program</a>
+            </li>
+            <li>
+              <a href="">Refer a friend</a>
+            </li>
+            <li>
+              <a href="">Contact us</a>
+            </li>
+            <li>
+              <a href="">FAQ</a>
+            </li>
+            <li>
+              <a href="">Order Status</a>
+            </li>
+            <li>
+              <a href="">Warranty</a>
+            </li>
+            <li>
+              <a href="">Worldwide Shipping</a>
+            </li>
+            <li>
+              <a href="">Return Policy</a>
+            </li>
+            <li>
+              <a href="">Accessibility</a>
+            </li>
+          </ul>
+        </div>
+      </component-accordion>
+
+      <component-accordion class="group laptop:w-auto">
+        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
+          Explore
+          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
+            {% render 'icon-plus' %}
+          </span>
+          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
+            {% render 'icon-minus' %}
+          </span>
+        </div>
+        <div data-accordion-container>
+          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
+            <li>
+              <a href="">Ring sizer</a>
+            </li>
+            <li>
+              <a href="">Layaway plan</a>
+            </li>
+            <li>
+              <a href="">Financing options</a>
+            </li>
+            <li>
+              <a href="">Military discount</a>
+            </li>
+            <li>
+              <a href="">Appreciation discount</a>
+            </li>
+          </ul>
+        </div>
+      </component-accordion>
+
+      <component-accordion class="group laptop:w-auto">
+        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
+          About
+          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
+            {% render 'icon-plus' %}
+          </span>
+          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
+            {% render 'icon-minus' %}
+          </span>
+        </div>
+        <div data-accordion-container>
+          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
+            <li>
+              <a href="">About us</a>
+            </li>
+            <li>
+              <a href="">Affiliate program</a>
+            </li>
+            <li>
+              <a href="">Ambassador program</a>
+            </li>
+          </ul>
+        </div>
+      </component-accordion>
+
+      <component-accordion class="group laptop:w-auto">
+        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
+          Shop with Confidence
+          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
+            {% render 'icon-plus' %}
+          </span>
+          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
+            {% render 'icon-minus' %}
+          </span>
+        </div>
+        <div data-accordion-container>
+          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
+            <li>
+              <a href="">Genuine jewelry</a>
+            </li>
+            <li>
+              <a href="">Conflict free diamonds</a>
+            </li>
+            <li>
+              <a href="">Made in USA</a>
+            </li>
+            <li>
+              <a href="">Reviews</a>
+            </li>
+            <li>
+              <a href="">Allurez in the news</a>
+            </li>
+            </li>
+            <li>
+              <a href="">Book now - virtual or in person</a>
+            </li>
+          </ul>
+        </div>
+      </component-accordion>
+
+    </div>
+
+  </div>
+
+  <div class="border-t">
+
+    <div class="flex flex-col text-primary-300 gap-1 px-5 py-5 text-sm tablet:text-center tablet:flex-row tablet:justify-center tablet:items-center tablet:gap-4 laptop:container">
+      <div>Copyright © 2024. All Rights Reserved.</div>
+      <ul class="flex flex-wrap gap-1 [&>li:not(:last-child)]:after:content-['|'] [&>li:not(:last-child)]:after:ml-1">
+        {%- for link in linklists.footer-links.links -%}
+          <li>
+            <a href="{{ link.url }}" class="underline">{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const footerAccordions = document.querySelectorAll('.main-footer component-accordion');
+    
+    // Handle initial state
+    handleBreakpoint();
+
+    // Listen for breakpoint changes
+    window.addEventListener('screen-breakpoint', (event) => handleBreakpoint(event));
+
+    function handleBreakpoint(event) {
+      const currentMode = event ? event.detail.mode : window.screenMode;
+      const isLaptopOrAbove = ['laptop', 'desktop', 'wide'].includes(currentMode);
+
+      footerAccordions.forEach(accordion => {
+        if (isLaptopOrAbove) {
+          accordion.disable();
+        } else {
+          accordion.enable();
+        }
+      });
+    }
+  });
+</script>

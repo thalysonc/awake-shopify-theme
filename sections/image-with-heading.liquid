@@ -1,0 +1,58 @@
+{% schema %}
+  {
+    "name": "Image with Heading",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Your heading here"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "heading_size",
+        "label": "Heading Size",
+        "options": [
+          {
+            "value": "text-2xl",
+            "label": "Small"
+          },
+          {
+            "value": "text-3xl",
+            "label": "Medium"
+          },
+          {
+            "value": "text-4xl",
+            "label": "Large"
+          }
+        ],
+        "default": "text-3xl"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with Heading"
+      }
+    ]
+  }
+{% endschema %}
+
+<div class="container py-8">
+  {% if section.settings.heading != blank %}
+    <h2 class="font-primary font-medium {{ section.settings.heading_size }} mb-6 text-center">
+      {{ section.settings.heading }}
+    </h2>
+  {% endif %}
+
+  {% if section.settings.image != blank %}
+    <div class="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg">
+      {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'w-full h-full object-cover', alt: section.settings.heading
+      }}
+    </div>
+  {% endif %}
+</div>

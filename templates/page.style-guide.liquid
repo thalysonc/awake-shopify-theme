@@ -78,9 +78,8 @@
         <div class="bg-accent-500 text-onAccent-500 w-full h-20 p-4 uppercase font-bold">Accent 500 (#231F20)</div>
         <div class="bg-accent-600 text-onAccent-600 w-full h-20 p-4 uppercase font-bold">Accent 600 (#231F20)</div>
 
-        <div class="bg-alert-error text-onAlert-error w-full h-20 p-4 uppercase font-bold">Error (#DC2626)</div>
         <div class="bg-alert-success text-onAlert-success w-full h-20 p-4 uppercase font-bold">Success (#16A24A)</div>
-        <div class="bg-alert-highlight text-onAlert-highlight w-full h-20 p-4 uppercase font-bold">Highlight (#2563EA)</div>
+        <div class="bg-alert-error text-onAlert-error w-full h-20 p-4 uppercase font-bold">Error (#DC2626)</div>
         <div class="bg-alert-warning text-onAlert-warning w-full h-20 p-4 uppercase font-bold">Warning (#E9580C)</div>
 
         <div class="bg-base-background text-onBase-background w-full h-20 p-4 uppercase font-bold">Background (#FFFFFF)</div>
@@ -115,14 +114,14 @@
 
         <div class="flex flex-col gap-4">
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore                        
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore                                   
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id est laborum.
           </p>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore                        
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore                                   
                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
@@ -130,14 +129,14 @@
           </p>
 
           <p>Lorem ipsum dolor sit amet,
-            <a href="#">consectetur adipiscing elit</a>, sed do eiusmod tempor                        
+            <a href="#">consectetur adipiscing elit</a>, sed do eiusmod tempor                                   
                     incididunt ut labore
                     et dolore magna aliqua.
-            <b>Ut enim ad minim veniam</b>, quis nostrud exercitation ullamco laboris                        
+            <b>Ut enim ad minim veniam</b>, quis nostrud exercitation ullamco laboris                                   
                     nisi ut
                     aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur.
-            <i>Excepteur sint occaecat cupidatat non proident, sunt in                        
+            <i>Excepteur sint occaecat cupidatat non proident, sunt in                                   
                     culpa qui officia</i>
             deserunt mollit anim id est laborum.
           </p>
@@ -281,13 +280,12 @@
 
         <div class="grid grid-cols-12 gap-4">
 
-          <div class="w-12 h-12">
-            {% render 'icon-cart' %}
-          </div>
 
-          <div class="w-12 h-12">
-            {% render 'icon-user' %}
-          </div>
+          {% render 'icon-cart' %}
+
+
+          {% render 'icon-user' %}
+
 
         </div>
 
@@ -299,6 +297,38 @@
         data-status="pending">
 
         <variant-selector data-handle="{{ product.handle }}"></variant-selector>
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Test Section"
+        data-group="Sections"
+        data-status="done">
+
+        {% section 'test' %}
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Image with Heading"
+        data-group="Components"
+        data-status="done">
+
+        {% section 'image-with-heading' %}
+
+      </styleguide-section>
+
+      <styleguide-section
+        data-title="Accordion"
+        data-group="Base"
+        data-status="done">
+
+        <component-accordion>
+          <div data-accordion-trigger>Accordion Trigger</div>
+          <div data-accordion-container>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+          </div>
+        </component-accordion>
 
       </styleguide-section>
 
