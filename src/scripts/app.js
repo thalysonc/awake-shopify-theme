@@ -1,4 +1,14 @@
 //
+//  API
+//  _____________________________________________
+
+import product from './api/product';
+//import cart from './api/cart';
+
+product.init();
+//cart.init();
+
+//
 //  Utils
 //  _____________________________________________
 
@@ -10,5 +20,8 @@ detectBreakpoint.init();
 //  Web components
 //  _____________________________________________
 
+require('./components/component-template');
 require('./components/variant-selector');
 require('./components/component-accordion');
+require('./components/product-card');
+//require('./components/upsell-product-card');

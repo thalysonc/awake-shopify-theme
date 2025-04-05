@@ -33,9 +33,18 @@
 
     {{ content_for_layout }}
 
+    <div id="product-grid" class="container py-10 flex gap-10">
+      <product-card data-handle="rasteirinha-havaianas-you-st-tropez"></product-card>
+      <product-card data-handle="bolsa-de-praia-havaianas-print-1"></product-card>
+      <product-card data-handle="bolsa-de-praia-havaianas-print-1"></product-card>
+      <product-card data-handle="bolsa-de-praia-havaianas-print-1"></product-card>
+    </div>
+
     {% section 'footer' %}
 
     {% render 'footer-scripts' %}
+
+    {% render 'product-card-template' %}
 
   </body>
 
