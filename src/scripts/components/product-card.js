@@ -22,12 +22,14 @@ if (!customElements.get(customElements.component)) {
         constructor() {
             super();
 
-            theme.product.getProduct(this.dataset.handle).then(product => {
+            theme.product.loadProduct(this.dataset.handle).then(product => {
 
                 this.render({
-                    image: product.product.image.src,
-                    title: product.product.title,
-                    vendor: product.product.vendor
+                    image: product.featured_image,
+                    title: product.title,
+                    vendor: product.vendor,
+                    url: product.url,
+                    firstVariantId: product.variants[0].id
                 });
 
                 this.initEvents();
@@ -39,8 +41,19 @@ if (!customElements.get(customElements.component)) {
             let addToCartButton = this.querySelector('[data-add-to-cart]');
 
             if (addToCartButton) {
+                
                 addToCartButton.addEventListener('click', () => {
-                    alert('product added to cart');
+
+                    const variantId = this.querySelector('[name="variant-id"]').value;
+
+                    if (variantId) {
+
+                        theme.cart.add(variantId, 1).then(data => {
+                            alert('Product added to cart');
+                        }).catch(error => {
+                            alert('Error adding product to cart');
+                        });
+                    }
                 });
             }
         }
