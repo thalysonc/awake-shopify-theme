@@ -1,10 +1,19 @@
 {% raw %}
-<template is="component-template" data-type="product-card">
+  <template is="component-template" data-type="product-card">
     <div class="product-card w-full border border-gray-200 rounded-md p-4">
+      <input
+        type="hidden"
+        name="variant-id"
+        value="{{ firstVariantId }}">
+      <a href="{{ url }}">
         <img src="{{ image }}" alt="{{ title }}">
-        <h1 class="pt-2 font-bold">{{ title }}</h1>
-        <div class="pt-2 mb-2">{{ vendor }}</div>
-        <addtocart-button data-add-to-cart data-handle="{{ handle }}" class="btn mt-3 btn-primary w-full">Add to Cart</addtocart-button>
+      </a>
+      <h1 class="pt-2 font-bold">{{ title }}</h1>
+      <div class="pt-2 mb-2">{{ vendor }}</div>
+      <addtocart-button
+        data-add-to-cart
+        data-handle="{{ handle }}"
+        class="btn mt-3 btn-primary w-full cursor-pointer">Add to Cart</addtocart-button>
     </div>
-</template>
+  </template>
 {% endraw %}

@@ -1,0 +1,146 @@
+<div class="container py-10">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="product-media">
+      {% if product.featured_media %}
+        <img
+          src="{{ product.featured_media | img_url: '800x' }}"
+          alt="{{ product.featured_media.alt | escape }}"
+          class="w-full h-auto"
+          loading="lazy"
+          width="{{ product.featured_media.width }}"
+          height="{{ product.featured_media.height }}">
+      {% endif %}
+
+      {% if product.media.size > 1 %}
+        <div class="product-gallery grid grid-cols-4 gap-4 mt-4">
+          {% for media in product.media %}
+            <button class="gallery-item" data-media-id="{{ media.id }}">
+              <img
+                src="{{ media | img_url: '150x' }}"
+                alt="{{ media.alt | escape }}"
+                class="w-full h-auto"
+                loading="lazy"
+                width="{{ media.width }}"
+                height="{{ media.height }}">
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-details">
+      <h1 class="text-3xl font-bold mb-2">{{ product.title }}</h1>
+
+      {% if product.vendor %}
+        <div class="text-gray-600 mb-4">{{ product.vendor }}</div>
+      {% endif %}
+
+      <div class="text-xl font-semibold mb-6">
+        {{ product.price | money }}
+      </div>
+
+
+      {% form 'product'
+        , product %}
+
+        <input
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_variant.id }}">
+
+        <div class="flex flex-col gap-2 my-4">
+          <label for="quantity">Quantity</label>
+          <input
+            type="number"
+            name="quantity"
+            value="1">
+        </div>
+
+        <div class="flex flex-col gap-2 my-4">
+          <label for="properties[Custom Name]">Custom Name</label>
+          <input
+            type="text"
+            name="properties[Custom Name]"
+            value="">
+        </div>
+
+        <input
+          type="hidden"
+          name="properties[_location]"
+          value="brazil">
+
+        <button
+          type="submit"
+          name="add"
+          class="w-full bg-black text-white py-3 px-6 rounded hover:bg-gray-800 transition"
+          {% unless product.available %}
+          disabled{% endunless %}>
+          {% if product.available %}
+            Add to Cart
+          {% else %}
+            Sold Out
+          {% endif %}
+        </button>
+
+      {% endform %}
+
+      <script>
+
+        		document.querySelector('form[action="/cart/add"]').addEventListener('submit', event => {
+        			
+        			// Prevent default form submission
+        			event.preventDefault();
+
+        			// Get form elements
+        			const form = event.target;
+        			const variantId = form.querySelector('input[name="id"]').value;
+        			const quantity = form.querySelector('input[name="quantity"]').value;
+        			const customName = form.querySelector('input[name="properties[Custom Name]"]').value;
+
+        			let properties = {};
+
+        			if (customName) {
+        				properties['Custom Name'] = customName;
+        			}
+
+        			// Disable submit button
+        			const submitButton = form.querySelector('button[type="submit"]');
+        			submitButton.disabled = true;
+        			submitButton.innerHTML = 'Adding to cart...';
+        			
+        			// Add to cart
+        			theme.cart.add(variantId, quantity, properties).then(data => {
+
+        				// Enable submit button
+        				submitButton.disabled = false;
+        				submitButton.innerHTML = 'Added to cart!';
+
+        				// Return submit button to original state
+        				setTimeout(() => {
+        					submitButton.disabled = false;
+        					submitButton.innerHTML = 'Add to Cart';
+        				}, 2000);
+
+        			}).catch(error => {
+
+        				console.error(error);
+
+        				// Enable submit button
+        				submitButton.disabled = false;
+        				submitButton.innerHTML = 'Add to Cart';
+
+        				// Return submit button to original state
+        				setTimeout(() => {
+        					submitButton.disabled = false;
+        					submitButton.innerHTML = 'Add to Cart';
+        				}, 2000);
+
+        			});
+
+        		});
+
+      </script>
+
+    </div>
+  </div>
+</div>

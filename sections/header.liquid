@@ -47,10 +47,23 @@
 
         <button class="h-5 w-5 hidden laptop:block">{% render 'icon-heart' %}</button>
 
-        <button class="flex items-center gap-[6px]">
+        {% comment %} Minicart icon and item count {% endcomment %}
+        <a href="/cart" class="flex items-center gap-[6px]">
           <span class="h-5 w-5">{% render 'icon-cart' %}</span>
-          <span class="text-sm">2</span>
-        </button>
+          <span class="text-sm" data-cart-item-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+        </a>
+
+        <script>
+
+          window.addEventListener('addtocart', event => {
+            window.theme.cart.get().then(cart => {
+              const cartItemCount = document.querySelector('[data-cart-item-count]');
+              cartItemCount.textContent = cart.item_count;
+              cartItemCount.dataset.cartItemCount = cart.item_count;
+            });
+          });
+
+        </script>
 
       </div>
 

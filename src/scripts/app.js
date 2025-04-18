@@ -3,10 +3,10 @@
 //  _____________________________________________
 
 import product from './api/product';
-//import cart from './api/cart';
+import cart from './api/cart';
 
 product.init();
-//cart.init();
+cart.init();
 
 //
 //  Utils
