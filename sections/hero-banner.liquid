@@ -1,0 +1,269 @@
+<div class="relative overflow-hidden">
+
+  {% comment %} Desktop Background {% endcomment %}
+  <div class="hidden tablet:block">
+
+    {% if section.settings.background_type == 'video' and section.settings.video_url != blank %}
+
+      <div class="w-full h-full">
+        <video
+          class="w-full h-full wide:h-[800px] wide:object-cover"
+          autoplay
+          loop
+          muted
+          playsinline
+          poster="{% if section.settings.video_cover_image %}{{ section.settings.video_cover_image | image_url: width: 2000 }}{% endif %}">
+          <source src="{{ section.settings.video_url }}" type="video/mp4">
+        </video>
+      </div>
+
+    {% elsif section.settings.background_image %}
+
+      {{ section.settings.background_image | image_url: width: 2000 | image_tag: loading: 'lazy', class: 'w-full block wide:h-[800px] wide:object-cover', alt: section.settings.heading
+      }}
+
+    {% else %}
+
+      <div class="w-full h-[600px] bg-gray-200"></div>
+
+    {% endif %}
+
+  </div>
+
+  {% comment %} Mobile Background {% endcomment %}
+  <div class="tablet:hidden">
+
+    {% if section.settings.mobile_background_type == 'video' and section.settings.mobile_video_url != blank %}
+
+      <video
+        class="w-full h-full"
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="{% if section.settings.mobile_video_cover_image %}{{ section.settings.mobile_video_cover_image | image_url: width: 1000 }}{% endif %}">
+        <source src="{{ section.settings.mobile_video_url }}" type="video/mp4">
+      </video>
+
+    {% elsif section.settings.mobile_background_image %}
+
+      {{ section.settings.mobile_background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'w-full block', alt: section.settings.heading
+      }}
+
+    {% elsif section.settings.background_image %}
+
+      {{ section.settings.background_image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'w-full h-[400px] object-cover', alt: section.settings.heading
+      }}
+
+    {% else %}
+
+      <div class="w-full h-[400px] bg-gray-200"></div>
+
+    {% endif %}
+
+  </div>
+
+  {% comment %} Text Content {% endcomment %}
+  <div class="flex items-center justify-center px-4 py-8 tablet:absolute tablet:inset-0">
+
+    <div class="container mx-auto flex flex-col items-center text-center {% if section.settings.text_alignment == 'start' %}tablet:items-start tablet:text-left{% elsif section.settings.text_alignment == 'center' %}tablet:items-center tablet:text-center{% elsif section.settings.text_alignment == 'end' %}tablet:items-end tablet:text-right{% endif %}">
+
+      <div class="tablet:px-20 laptop:px-32">
+
+        {% for block in section.blocks %}
+
+          {% case block.type %}
+
+            {% when 'heading' %}
+
+              {% if block.settings.heading != blank %}
+                <h1 class="text-3xl max-w-[520px] tablet:text-white tablet:text-4xl tablet:max-w-[300px]" {{ block.shopify_attributes }}>
+                  {{ block.settings.heading }}
+                </h1>
+              {% endif %}
+
+            {% when 'subtext' %}
+
+              {% if block.settings.subtext != blank %}
+                <div class="max-w-[520px] m-auto tablet:text-white tablet:max-w-[300px] tablet:m-0" {{ block.shopify_attributes }}>
+                  {{ block.settings.subtext }}
+                </div>
+              {% endif %}
+
+            {% when 'button' %}
+
+              {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+
+                <div class="mt-6{% if forloop.first %}flex flex-wrap gap-4 justify-center{% endif %}" {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.button_link }}" class="btn btn-link tablet:inverse">
+                    {{ block.settings.button_label }}
+                  </a>
+                </div>
+
+              {% endif %}
+
+          {% endcase %}
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+  {
+    "name": "Hero Banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Desktop"
+      },
+      {
+        "type": "select",
+        "id": "background_type",
+        "label": "Background Type",
+        "options": [
+          {
+            "value": "image",
+            "label": "Image"
+          }, {
+            "value": "video",
+            "label": "Video"
+          }
+        ],
+        "default": "image"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "url",
+        "id": "video_url",
+        "label": "Video URL",
+        "info": "Upload video file to Shopify Files first, then paste the URL here"
+      }, {
+        "type": "image_picker",
+        "id": "video_cover_image",
+        "label": "Video Cover Image",
+        "info": "Displays while video is loading"
+      }, {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Content Alignment",
+        "options": [
+          {
+            "value": "start",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "end",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "header",
+        "content": "Mobile"
+      }, {
+        "type": "select",
+        "id": "mobile_background_type",
+        "label": "Background Type",
+        "options": [
+          {
+            "value": "image",
+            "label": "Image"
+          }, {
+            "value": "video",
+            "label": "Video"
+          }
+        ],
+        "default": "image"
+      }, {
+        "type": "image_picker",
+        "id": "mobile_background_image",
+        "label": "Background Image"
+      }, {
+        "type": "url",
+        "id": "mobile_video_url",
+        "label": "Video URL",
+        "info": "Upload video file to Shopify Files first, then paste the URL here"
+      }, {
+        "type": "image_picker",
+        "id": "mobile_video_cover_image",
+        "label": "Video Cover Image",
+        "info": "Displays while video is loading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "heading",
+            "label": "Heading",
+            "default": "<p>A Promise of <i>FOREVER</i></p>"
+          }
+        ]
+      }, {
+        "type": "subtext",
+        "name": "Subtext",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "subtext",
+            "label": "Text",
+            "default": "<p>Celebrate life's most precious moments with our exquisite collection of engagement rings and fine jewelry, crafted to perfection for your everlasting love.</p>"
+          }
+        ]
+      }, {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label",
+            "default": "Shop All Jewelry"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Banner",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "heading"
+          }, {
+            "type": "subtext"
+          }, {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

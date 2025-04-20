@@ -1,4 +1,5 @@
 @layer base {
+
 	/* Primary */
 	.btn {
 		@apply inline-flex justify-center align-middle items-center font-medium bg-primary-500 text-onPrimary-500 gap-2 text-[14px] leading-[14px] tracking-[1.4px] uppercase py-4 px-10;
@@ -62,10 +63,10 @@
 		@apply bg-transparent text-primary-500 p-0 pb-1 border-b border-primary-500 uppercase;
 
 		&:hover {
-			@apply bg-transparent text-primary-400 border-transparent;
+			@apply bg-transparent text-primary-300 no-underline;
 
 			.icon {
-				@apply fill-primary-400 stroke-primary-400;
+				@apply fill-primary-300 stroke-primary-300;
 			}
 		}
 
@@ -91,6 +92,18 @@
 
 		.icon {
 			@apply fill-primary-500 stroke-primary-500 inline-block h-[14px] w-[14px];
+		}
+
+		&.inverse {
+			@apply text-onPrimary-500 border-onPrimary-500;
+
+			&:hover {
+				@apply opacity-70;
+			}
+
+			.icon {
+				@apply fill-onPrimary-500 stroke-onPrimary-500;
+			}
 		}
 	}
 }
