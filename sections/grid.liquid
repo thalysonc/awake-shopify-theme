@@ -1,0 +1,215 @@
+{% assign mobile_columns = section.settings.mobile_columns %}
+{% assign tablet_columns = section.settings.tablet_columns %}
+{% assign desktop_columns = section.settings.desktop_columns %}
+
+<div class="
+  {% if section.settings.mobile_container %}container px-4 py-8{% endif %}
+  {% if section.settings.tablet_container %}tablet:container tablet:px-4 tablet:py-8{% endif %}
+  {% if section.settings.desktop_container %}laptop:container laptop:px-4 laptop:py-8{% endif %}">
+  <div class="grid 
+    {% if mobile_columns == 1 %}grid-cols-1
+    {% elsif mobile_columns == 2 %}grid-cols-2
+    {% elsif mobile_columns == 3 %}grid-cols-3{% endif %}
+    
+    {% if tablet_columns == 2 %}tablet:grid-cols-2
+    {% elsif tablet_columns == 3 %}tablet:grid-cols-3
+    {% elsif tablet_columns == 4 %}tablet:grid-cols-4
+    {% elsif tablet_columns == 5 %}tablet:grid-cols-5
+    {% elsif tablet_columns == 6 %}tablet:grid-cols-6{% endif %}
+    
+    {% if desktop_columns == 3 %}laptop:grid-cols-3
+    {% elsif desktop_columns == 4 %}laptop:grid-cols-4
+    {% elsif desktop_columns == 5 %}laptop:grid-cols-5
+    {% elsif desktop_columns == 6 %}laptop:grid-cols-6
+    {% elsif desktop_columns == 7 %}laptop:grid-cols-7
+    {% elsif desktop_columns == 8 %}laptop:grid-cols-8{% endif %}
+    
+    {% if section.settings.mobile_gap == '4' %}gap-4
+    {% elsif section.settings.mobile_gap == '6' %}gap-6
+    {% elsif section.settings.mobile_gap == '8' %}gap-8
+    {% elsif section.settings.mobile_gap == '10' %}gap-10
+    {% elsif section.settings.mobile_gap == '12' %}gap-12{% endif %}
+    
+    {% if section.settings.tablet_gap == '4' %}tablet:gap-4
+    {% elsif section.settings.tablet_gap == '6' %}tablet:gap-6
+    {% elsif section.settings.tablet_gap == '8' %}tablet:gap-8
+    {% elsif section.settings.tablet_gap == '10' %}tablet:gap-10
+    {% elsif section.settings.tablet_gap == '12' %}tablet:gap-12{% endif %}
+    
+    {% if section.settings.desktop_gap == '4' %}laptop:gap-4
+    {% elsif section.settings.desktop_gap == '6' %}laptop:gap-6
+    {% elsif section.settings.desktop_gap == '8' %}laptop:gap-8
+    {% elsif section.settings.desktop_gap == '10' %}laptop:gap-10
+    {% elsif section.settings.desktop_gap == '12' %}laptop:gap-12{% endif %}">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Grid",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Mobile"
+      },
+      {
+        "type": "checkbox",
+        "id": "mobile_container",
+        "label": "Enable container",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "mobile_columns",
+        "label": "Number of columns",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "default": 1
+      },
+      {
+        "type": "select",
+        "id": "mobile_gap",
+        "label": "Gap between items",
+        "options": [
+          {
+            "value": "0",
+            "label": "None"
+          },
+          {
+            "value": "4",
+            "label": "Small"
+          },
+          {
+            "value": "6",
+            "label": "Medium"
+          },
+          {
+            "value": "8",
+            "label": "Large"
+          },
+          {
+            "value": "10",
+            "label": "Extra Large"
+          },
+          {
+            "value": "12",
+            "label": "2x Large"
+          }
+        ],
+        "default": "4"
+      },
+      {
+        "type": "header",
+        "content": "Tablet"
+      },
+      {
+        "type": "checkbox",
+        "id": "tablet_container",
+        "label": "Enable container",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "tablet_columns",
+        "label": "Number of columns",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "select",
+        "id": "tablet_gap",
+        "label": "Gap between items",
+        "options": [
+          {
+            "value": "0",
+            "label": "None"
+          },
+          {
+            "value": "4",
+            "label": "Small"
+          },
+          {
+            "value": "6",
+            "label": "Medium"
+          },
+          {
+            "value": "8",
+            "label": "Large"
+          },
+          {
+            "value": "10",
+            "label": "Extra Large"
+          },
+          {
+            "value": "12",
+            "label": "2x Large"
+          }
+        ],
+        "default": "6"
+      },
+      {
+        "type": "header",
+        "content": "Desktop"
+      },
+      {
+        "type": "checkbox",
+        "id": "desktop_container",
+        "label": "Enable container",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "desktop_columns",
+        "label": "Number of columns",
+        "min": 2,
+        "max": 6,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "type": "select",
+        "id": "desktop_gap",
+        "label": "Gap between items",
+        "options": [
+          {
+            "value": "0",
+            "label": "None"
+          },
+          {
+            "value": "4",
+            "label": "Small"
+          },
+          {
+            "value": "6",
+            "label": "Medium"
+          },
+          {
+            "value": "8",
+            "label": "Large"
+          },
+          {
+            "value": "10",
+            "label": "Extra Large"
+          },
+          {
+            "value": "12",
+            "label": "2x Large"
+          }
+        ],
+        "default": "8"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      },
+      {
+        "type": "@theme"
+      }
+    ]
+  }
+{% endschema %}

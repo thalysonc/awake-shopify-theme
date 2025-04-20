@@ -33,9 +33,9 @@
 
     {{ content_for_layout }}
 
-    {% if template == 'index' %}
-      {% section 'hero-banner' %}
-    {% endif %}
+    {% section 'hero-banner' %}
+
+    {% section 'grid' %}
 
     <div id="product-grid" class="container py-10 flex gap-10">
       <product-card data-handle="rasteirinha-havaianas-you-st-tropez"></product-card>

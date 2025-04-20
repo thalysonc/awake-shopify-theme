@@ -1,0 +1,59 @@
+<div class="flex flex-col gap-5">
+  {% if block.settings.image %}
+    <img
+      src="{{ block.settings.image | image_url: width: 1200 }}"
+      alt="{{ block.settings.image.alt }}"
+      class="w-full block">
+  {% endif %}
+  <div class="flex flex-col gap-4 text-center">
+    <div class="flex flex-col gap-4">
+      <h2 class="text-xl tablet:text-3xl">{{ block.settings.heading }}</h2>
+      {% if block.settings.description != blank %}
+        <p>{{ block.settings.description }}</p>
+      {% endif %}
+    </div>
+    {% if block.settings.button_label %}
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="{{ block.settings.button_link }}" class="btn btn-link">{{ block.settings.button_label }}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text"
+      }
+    ]
+  }
+{% endschema %}
