@@ -23,7 +23,6 @@ if (!customElements.get(customElements.component)) {
             super();
 
             theme.product.loadProduct(this.dataset.handle).then(product => {
-
                 this.render({
                     image: product.featured_image,
                     title: product.title,

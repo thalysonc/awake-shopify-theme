@@ -1,5 +1,7 @@
 {% layout none %}
 
 {
-	"product": {{ product | default: '' | json }}
+	"product": {{ product | default: '' | json }},
+	"options_with_values": {{ product.options_with_values | default: "" | json }},
+	"options_by_name": {{ product.options_by_name | default: "" | json }}
 }

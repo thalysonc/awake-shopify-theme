@@ -243,6 +243,27 @@ const component = {
         } catch (error) {
             console.warn('Failed to clean cache:', error);
         }
+    },
+
+    /**
+     * Get variant data by ID from a product
+     * 
+     * @public
+     * @method
+     * @name getVariant
+     * @param {number} variantId - The ID of the variant to find
+     * @param {object} product - Product data containing variants array
+     * @returns {object|null} The matching variant object or null if not found
+     */
+    getVariant: (variantId, product) => {
+        
+        if (!product?.variants?.length || !variantId) {
+            return null;
+        }
+
+        return product.variants.find(variant => 
+            variant.id === Number(variantId)
+        ) || null;
     }
 };
 
