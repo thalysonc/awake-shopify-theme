@@ -1,4 +1,4 @@
-<div class="relative overflow-hidden">
+<div class="relative overflow-hidden {% if section.settings.desktop_container %}laptop:container laptop:px-4 laptop:py-8{% endif %}">
 
   {% comment %} Desktop Background {% endcomment %}
   <div class="hidden tablet:block">
@@ -66,9 +66,9 @@
   {% comment %} Text Content {% endcomment %}
   <div class="flex items-center justify-center px-4 py-8 tablet:absolute tablet:inset-0">
 
-    <div class="container mx-auto flex flex-col items-center text-center {% if section.settings.text_alignment == 'start' %}tablet:items-start tablet:text-left{% elsif section.settings.text_alignment == 'center' %}tablet:items-center tablet:text-center{% elsif section.settings.text_alignment == 'end' %}tablet:items-end tablet:text-left{% endif %}">
+    <div class="container mx-auto flex flex-col {% if section.settings.mobile_text_alignment == 'start' %}items-start text-left{% elsif section.settings.mobile_text_alignment == 'center' %}items-center text-center{% endif %} tablet:{% if section.settings.text_alignment == 'start' %}items-start text-left{% elsif section.settings.text_alignment == 'center' %}items-center text-center{% elsif section.settings.text_alignment == 'end' %}items-end text-left{% endif %}">
 
-      <div class="tablet:px-20 laptop:px-32">
+      <div class="tablet:px-20 laptop:px-48">
 
         {% for block in section.blocks %}
 
@@ -116,11 +116,17 @@
 
 {% schema %}
   {
-    "name": "Hero Banner",
+    "name": "Banner",
     "settings": [
       {
         "type": "header",
         "content": "Desktop"
+      },
+      {
+        "type": "checkbox",
+        "id": "desktop_container",
+        "label": "Enable container",
+        "default": true
       },
       {
         "type": "select",
@@ -141,8 +147,7 @@
         "type": "image_picker",
         "id": "background_image",
         "label": "Background Image"
-      },
-      {
+      }, {
         "type": "url",
         "id": "video_url",
         "label": "Video URL",
@@ -168,7 +173,7 @@
             "label": "Right"
           }
         ],
-        "default": "start"
+        "default": "end"
       }, {
         "type": "header",
         "content": "Mobile"
@@ -200,6 +205,20 @@
         "id": "mobile_video_cover_image",
         "label": "Video Cover Image",
         "info": "Displays while video is loading"
+      }, {
+        "type": "select",
+        "id": "mobile_text_alignment",
+        "label": "Content Alignment",
+        "options": [
+          {
+            "value": "start",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "start"
       }
     ],
     "blocks": [
@@ -212,7 +231,7 @@
             "type": "richtext",
             "id": "heading",
             "label": "Heading",
-            "default": "<p>A Promise of <i>FOREVER</i></p>"
+            "default": "<p>Holiday Sparkle</p>"
           }
         ]
       }, {
@@ -224,7 +243,7 @@
             "type": "richtext",
             "id": "subtext",
             "label": "Text",
-            "default": "<p>Celebrate life's most precious moments with our exquisite collection of engagement rings and fine jewelry, crafted to perfection for your everlasting love.</p>"
+            "default": "<p>Complete your look with elegant new arrivals that evoke timeless elegance this upcoming season and beyond.</p>"
           }
         ]
       }, {
@@ -235,7 +254,7 @@
             "type": "text",
             "id": "button_label",
             "label": "Button Label",
-            "default": "Shop All Jewelry"
+            "default": "Shop new"
           }, {
             "type": "url",
             "id": "button_link",
@@ -246,7 +265,7 @@
     ],
     "presets": [
       {
-        "name": "Hero Banner",
+        "name": "Banner",
         "category": "Image",
         "blocks": [
           {

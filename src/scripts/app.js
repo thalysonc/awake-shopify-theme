@@ -14,9 +14,17 @@ cart.init();
 
 import detectBreakpoint from "./utils/detect-breakpoint";
 import money from "./utils/money";
+import escape from "./utils/escape";
 
 detectBreakpoint.init();
 money.init();
+escape.init();
+
+//
+//  Libs
+//  _____________________________________________
+
+window.focusTrap = require('./libs/focus-trap');
 
 //
 //  Web components
@@ -30,3 +38,4 @@ require('./components/product-card');
 //require('./components/upsell-product-card');
 require('./components/product-form');
 require('./components/variant-picker');
+require('./components/side-drawer');

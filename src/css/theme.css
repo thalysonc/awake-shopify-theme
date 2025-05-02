@@ -5,6 +5,7 @@
 @import "base/button.css";
 
 @import "components/accordion.css";
+@import "components/side-drawer.css";
 
 @tailwind base;
 @tailwind components;

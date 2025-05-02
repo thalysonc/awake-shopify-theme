@@ -1,3 +1,6 @@
+{% assign footerMenu = section.settings.footer_menu %}
+{% assign footerLinks = section.settings.footer_links %}
+
 <div class="main-footer border-t">
 
   <div class="px-5 py-8 flex flex-col gap-8 tablet:flex-row laptop:container laptop:gap-4 desktop:gap-8">
@@ -20,140 +23,38 @@
     </div>
 
     <div class="flex flex-col divide-y tablet:w-1/2 tablet:order-1 laptop:w-2/3 laptop:flex-row laptop:justify-between laptop:pr-10 laptop:divide-none laptop:gap-4 desktop:w-9/12 desktop:gap-8 desktop:pr-20">
-    
-    <component-accordion class="group laptop:w-auto">
-        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
-          Customer Service
-          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
-            {% render 'icon-plus' %}
-          </span>
-          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
-            {% render 'icon-minus' %}
-          </span>
-        </div>
-        <div data-accordion-container>
-          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
-            <li>
-              <a href="">Loyalty program</a>
-            </li>
-            <li>
-              <a href="">Refer a friend</a>
-            </li>
-            <li>
-              <a href="">Contact us</a>
-            </li>
-            <li>
-              <a href="">FAQ</a>
-            </li>
-            <li>
-              <a href="">Order Status</a>
-            </li>
-            <li>
-              <a href="">Warranty</a>
-            </li>
-            <li>
-              <a href="">Worldwide Shipping</a>
-            </li>
-            <li>
-              <a href="">Return Policy</a>
-            </li>
-            <li>
-              <a href="">Accessibility</a>
-            </li>
-          </ul>
-        </div>
-      </component-accordion>
 
-      <component-accordion class="group laptop:w-auto">
-        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
-          Explore
-          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
-            {% render 'icon-plus' %}
-          </span>
-          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
-            {% render 'icon-minus' %}
-          </span>
-        </div>
-        <div data-accordion-container>
-          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
-            <li>
-              <a href="">Ring sizer</a>
-            </li>
-            <li>
-              <a href="">Layaway plan</a>
-            </li>
-            <li>
-              <a href="">Financing options</a>
-            </li>
-            <li>
-              <a href="">Military discount</a>
-            </li>
-            <li>
-              <a href="">Appreciation discount</a>
-            </li>
-          </ul>
-        </div>
-      </component-accordion>
+      {% for link in footerMenu.links %}
 
-      <component-accordion class="group laptop:w-auto">
-        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
-          About
-          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
-            {% render 'icon-plus' %}
-          </span>
-          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
-            {% render 'icon-minus' %}
-          </span>
-        </div>
-        <div data-accordion-container>
-          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
-            <li>
-              <a href="">About us</a>
-            </li>
-            <li>
-              <a href="">Affiliate program</a>
-            </li>
-            <li>
-              <a href="">Ambassador program</a>
-            </li>
-          </ul>
-        </div>
-      </component-accordion>
+        {% if link.links != blank %}
 
-      <component-accordion class="group laptop:w-auto">
-        <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
-          Shop with Confidence
-          <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
-            {% render 'icon-plus' %}
-          </span>
-          <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
-            {% render 'icon-minus' %}
-          </span>
-        </div>
-        <div data-accordion-container>
-          <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
-            <li>
-              <a href="">Genuine jewelry</a>
-            </li>
-            <li>
-              <a href="">Conflict free diamonds</a>
-            </li>
-            <li>
-              <a href="">Made in USA</a>
-            </li>
-            <li>
-              <a href="">Reviews</a>
-            </li>
-            <li>
-              <a href="">Allurez in the news</a>
-            </li>
-            </li>
-            <li>
-              <a href="">Book now - virtual or in person</a>
-            </li>
-          </ul>
-        </div>
-      </component-accordion>
+          <component-accordion class="group laptop:w-auto">
+
+            <div class="uppercase text-sm py-4 flex items-center gap-2 justify-between laptop:pt-0" data-accordion-trigger>
+              {{ link.title }}
+              <span class="w-5 h-5 group-[.active]:hidden laptop:!hidden">
+                {% render 'icon-plus' %}
+              </span>
+              <span class="w-5 h-5 hidden group-[.active]:block laptop:!hidden">
+                {% render 'icon-minus' %}
+              </span>
+            </div>
+
+            <div data-accordion-container>
+              <ul class="flex flex-col gap-3 pt-1 pb-4 text-sm leading-[18px] text-primary-400">
+                {% for child_link in link.links %}
+                  <li>
+                    <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+          </component-accordion>
+
+        {% endif %}
+
+      {% endfor %}
 
     </div>
 
@@ -164,10 +65,12 @@
     <div class="flex flex-col text-primary-300 gap-1 px-5 py-5 text-sm tablet:text-center tablet:flex-row tablet:justify-center tablet:items-center tablet:gap-4 laptop:container">
       <div>Copyright © 2024. All Rights Reserved.</div>
       <ul class="flex flex-wrap gap-1 [&>li:not(:last-child)]:after:content-['|'] [&>li:not(:last-child)]:after:ml-1">
-        {%- for link in linklists.footer-links.links -%}
-          <li>
-            <a href="{{ link.url }}" class="underline">{{ link.title }}</a>
-          </li>
+        {%- for link in footerLinks.links -%}
+          {% if link.links == blank %}
+            <li>
+              <a href="{{ link.url }}" class="underline">{{ link.title }}</a>
+            </li>
+          {% endif %}
         {%- endfor -%}
       </ul>
     </div>
@@ -200,3 +103,31 @@
     }
   });
 </script>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Footer Menu",
+        "info": "Select the menu for the main footer navigation"
+      }, {
+        "type": "link_list",
+        "id": "footer_links",
+        "label": "Footer Links",
+        "info": "Select the menu for the bottom footer links"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Footer",
+        "settings": {
+          "footer_menu": "footer",
+          "footer_links": "footer-links"
+        }
+      }
+    ]
+  }
+{% endschema %}

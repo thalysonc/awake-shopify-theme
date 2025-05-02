@@ -1,0 +1,87 @@
+@layer components {
+
+    .side-drawer {
+        @apply z-40 fixed;
+
+        /* CSS Custom Properties for configuration */
+        --drawer-width: 375px;
+        --drawer-transition-duration: 300ms;
+        --drawer-overlay-opacity: 0.3;
+
+        [data-close] {
+            font-size: 0;
+            @apply absolute right-2 top-2 p-2  rounded-full hover:bg-gray-100 transition-colors duration-200;
+
+            svg {
+                @apply size-5;
+            }
+        }
+
+        [data-container] {
+            @apply transform -translate-x-full top-0 left-0 pt-8 bg-base-surface text-onBase-surface fixed h-full overflow-auto;
+            width: var(--drawer-width);
+            transition: transform var(--drawer-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-overlay] {
+            content: '';
+            display: block;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            cursor: pointer;
+            background: rgb(0, 0, 0, var(--drawer-overlay-opacity));
+            opacity: 0;
+            transition: opacity var(--drawer-transition-duration) cubic-bezier(0.4, 0, 0.2, 1),
+                        transform var(--drawer-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        &.active {
+            [data-container] {
+                @apply translate-x-0;
+            }
+
+            [data-overlay] {
+                opacity: 1;
+            }
+        }
+
+        &.transition-out {
+            [data-container] {
+                @apply -translate-x-full;
+            }
+
+            [data-overlay] {
+                opacity: 0;
+            }
+        }
+
+        /* Right side */
+        &[data-side="right"] {
+            [data-container] {
+                @apply translate-x-full right-0 left-auto;
+            }
+
+            &.active {
+                [data-container] {
+                    @apply -translate-x-0;
+                }
+            }
+
+            &.transition-out {
+                [data-container] {
+                    @apply translate-x-full;
+                }
+            }
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            [data-container] {
+                width: 100%;
+            }
+        }
+    }
+}

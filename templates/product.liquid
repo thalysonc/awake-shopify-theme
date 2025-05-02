@@ -1,5 +1,220 @@
 <div class="container py-10">
 
+  <div class="mb-5">
+    <span>
+      <span class="">
+        HOME / JEWELRY / RINGS /
+      </span>
+      <span class="">
+        Twisted Infinity Round Diamond Engagement Ring
+      </span>
+    </span>
+  </div>
+
+  <div class="grid grid-cols-12 gap-8">
+    <!-- Product Images Section -->
+    <div class="col-span-8 grid grid-cols-2 gap-4">
+      <!-- Main Image -->
+      <div class="relative border border-gray-200 rounded-lg overflow-hidden">
+        <div class="aspect-square">
+          <img
+            class="w-full h-full object-cover"
+            src="https://placehold.co/400x400"
+            alt="Product main image" />
+        </div>
+        <div class="absolute bottom-4 left-4 right-4 flex gap-2">
+          <button class="flex-1 bg-white border border-gray-200 py-2 px-4 rounded text-sm">
+            360° View
+          </button>
+          <button class="flex-1 bg-white border border-gray-200 py-2 px-4 rounded text-sm">
+            Virtual Try On
+          </button>
+        </div>
+      </div>
+
+      <!-- Thumbnail Images -->
+      {% for i in (1..5) %}
+        <div class="relative border border-gray-200 rounded-lg overflow-hidden">
+          <div class="aspect-square">
+            <img
+              class="w-full h-full object-cover mix-blend-multiply"
+              src="https://placehold.co/400x400"
+              alt="Product thumbnail {{ i }}" />
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Product Details Section -->
+    <div class="col-span-4 flex flex-col gap-6">
+      <h1 class="text-xl uppercase tracking-tight font-normal">
+        Twisted Infinity Round Diamond Engagement Ring
+      </h1>
+
+      <!-- Rating -->
+      <div class="flex items-center gap-2">
+        <div class="flex">
+          {% for i in (1..5) %}
+            <img
+              class="w-4 h-4"
+              src="ratting-stars{{ i-1 }}.svg"
+              alt="Star rating" />
+          {% endfor %}
+        </div>
+        <span class="text-sm">(11) Reviews</span>
+      </div>
+
+      <!-- Pricing -->
+      <div class="flex items-center gap-5">
+        <div class="flex gap-8">
+          <div>
+            <div class="text-lg font-medium uppercase">$1,306</div>
+            <div class="text-sm">23% Savings</div>
+          </div>
+          <div>
+            <div class="text-lg line-through text-gray-500">$1,406</div>
+            <div class="text-sm">Everyone Else</div>
+          </div>
+        </div>
+        <a href="#" class="text-sm underline">Learn about our fair pricing</a>
+      </div>
+
+      <!-- Payment Options -->
+      <div class="space-y-2">
+        <div class="text-sm font-medium">
+          Or Starting at $250.67 for 6 months
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm">
+            Sparkle Now, Pay Later with Klarna, Affirm, Layaway
+          </span>
+          <img
+            class="w-3 h-3"
+            src="arrows0.svg"
+            alt="Payment options" />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3 items-start">
+        <!-- Cabeçalho -->
+        <div class="flex justify-between w-full">
+          <span class="text-brand-black text-base font-normal leading-[130%] tracking-[-0.01em]">
+            Origin: Lab Grown
+          </span>
+          <span class="text-grayscale-70 text-sm font-normal leading-[130%] underline tracking-[-0.01em]">
+            What’s The Difference
+          </span>
+        </div>
+
+        <!-- Botões de seleção -->
+        <div class="flex w-full">
+          <div class="flex items-center justify-center flex-1 h-[53px] border border-gray-scale-30-outline px-3.5 py-1.5">
+            <span class="text-brand-black text-sm font-normal leading-[130%] tracking-[-0.01em]">
+              Natural Stone
+            </span>
+          </div>
+          <div class="flex items-center justify-center flex-1 h-[53px] border border-brand-black -ml-px px-3.5 py-1.5">
+            <span class="text-brand-black text-sm font-normal leading-[130%] tracking-[-0.01em]">
+              Lab Grown Stone
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-3">
+        <!-- Cabeçalho -->
+        <div class="flex justify-between w-full">
+          <span class="text-brand-black text-base leading-[130%] tracking-[-0.01em]">Center Stone: Round</span>
+          <span class="text-grayscale-70 text-sm leading-[130%] underline tracking-[-0.01em]">What’s Your Shape</span>
+        </div>
+
+        <!-- Grid de shapes -->
+        <div class="flex flex-wrap w-full">
+          <!-- Exemplo de botão de shape -->
+          <div class="flex flex-col items-center justify-center p-3 border border-brand-black">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Round"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Round</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Marquise"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Marquise</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Cushion"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Cushion</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Emerald"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Emerald</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Heart"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Heart</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Oval"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Oval</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Pear"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Pear</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Princess"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Princess</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Radiant"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Radiant</span>
+          </div>
+
+          <div class="flex flex-col items-center justify-center p-3 border border-grayscale-30-outline">
+            <img
+              src="https://placehold.co/50x50"
+              alt="Asscher"
+              class="mb-2" />
+            <span class="text-brand-black text-[13px] leading-[120%] tracking-[-0.01em]">Asscher</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <product-form data-handle="{{ product.handle }}">
 
     {% form 'product'
